@@ -18,7 +18,7 @@ public class Aplicacao {
     private Oscar rosterOscar;
 
     public static void main(String[] args) {
-
+        Aplicacao ap = new Aplicacao();
         oscarmale = new ManipulacaoArquivo("oscarmale.csv");
         oscarfemale = new ManipulacaoArquivo("oscarfemale.csv");
 
@@ -39,5 +39,21 @@ public class Aplicacao {
                 .map(Oscar::getName)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         map.entrySet().stream().max(Comparator.comparingLong(Map.Entry::getValue)).ifPresent(c -> System.out.println(c.getKey() + c.getValue() ));
+    }
+    private void atorMaisPremiada(){
+        List<Oscar> roster = oscarmale.getRoster();
+        Map<String, Long> map = roster.stream()
+                .map(Oscar::getName)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        map.entrySet().stream().max(Comparator.comparingLong(Map.Entry::getValue)).ifPresent(c -> System.out.println(c.getKey() + c.getValue() ));
+    }
+    private void atrizEntrevinteetrintaAnosMaispremiada() {
+    System.out.println("Atriz entre mais premiada (entre 20 e 30 anos): ");
+    List<Oscar> roster = oscarfemale.getRoster();
+    Map<String, Long> map = roster.stream()
+            .filter(OscarGanhadora -> (OscarGanhadora.getAge() >=20 && OscarGanhadora.getAge() <=30))
+            .map(Oscar::getName)
+            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    map.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).ifPresent(i -> System.out.println(i.getKey() + i.getValue()));
     }
 }
