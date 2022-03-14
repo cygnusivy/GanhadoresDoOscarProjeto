@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,8 +23,21 @@ public class Aplicacao {
     }
     private void ganhadorMaisJovem(){
         System.out.println("Ganhador mais Jovem: ");
-        List<Oscar> rosterMale = ManipulacaoArquivo
+        List<Oscar> roster = ManipulacaoArquivo.getRoster();
+        roster.stream().sorted(Comparator.comparing(Oscar.getAge)).findFirst();
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private void atrizMaisJovemGanhouOscar() {
