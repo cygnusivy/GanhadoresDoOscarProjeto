@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -30,5 +32,12 @@ public class Aplicacao {
     private void ganhadoraMaisJovem() {
         List<Oscar> roster = oscarfemale.getRoster();
         System.out.println("Ganhadora mais jovem: "+ roster.stream().sorted(Comparator.comparing(Oscar::getAge)).findFirst());
+    }
+    private void atrizMaisPremiada(){
+        List<Oscar> roster = oscarfemale.getRoster();
+        Map<String, Long> map = roster.stream()
+                .map(Oscar::getName)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        map.entrySet().stream().max(Comparator.comparingLong(Map.Entry::getValue)).ifPresent(c -> System.out.println(c.getKey() + c.getValue() ));
     }
 }
