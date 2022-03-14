@@ -10,13 +10,21 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Aplicacao {
+    private static ManipulacaoArquivo oscarmale;
+    private static ManipulacaoArquivo oscarfemale;
+    private Oscar rosterOscar;
+
     public static void main(String[] args) {
-        Aplicacao aplicacao = new Aplicacao();
-        aplicacao.abrindoArquivoParaLeitura();
-        aplicacao.atorMaisJovemGanhouOscar();
-        aplicacao.atrizMaisJovemGanhouOscar();
+
+        oscarmale = new ManipulacaoArquivo("oscarmale.csv");
+        oscarfemale = new ManipulacaoArquivo("oscarfemale.csv");
 
     }
+    private void ganhadorMaisJovem(){
+        System.out.println("Ganhador mais Jovem: ");
+        List<Oscar> rosterMale = ManipulacaoArquivo
+    }
+
 
     private void atrizMaisJovemGanhouOscar() {
     }
