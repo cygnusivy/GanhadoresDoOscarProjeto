@@ -23,12 +23,12 @@ public class Aplicacao {
     }
 
     private void ganhadorMaisJovem() {
-        System.out.println("Ganhador mais Jovem: ");
-        List<Oscar> roster = ManipulacaoArquivo.getRoster();
-        roster.stream().sorted(Comparator.comparing(Oscar::getAge)).findFirst();
+        List<Oscar> roster = oscarmale.getRoster();
+        System.out.println("Ganhador mais Jovem: " + roster.stream().sorted(Comparator.comparing(Oscar::getAge)).findFirst());
     }
 
     private void ganhadoraMaisJovem() {
-        System.out.println("Ganhadora mais jovem: ");
+        List<Oscar> roster = oscarfemale.getRoster();
+        System.out.println("Ganhadora mais jovem: "+ roster.stream().sorted(Comparator.comparing(Oscar::getAge)).findFirst());
     }
 }
