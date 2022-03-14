@@ -19,6 +19,13 @@ public class Aplicacao {
 
     public static void main(String[] args) {
         Aplicacao ap = new Aplicacao();
+
+//        ap.ganhadorMaisJovem();
+//        ap.ganhadoraMaisJovem();
+//        ap.atrizMaisPremiada();
+//        ap.atorMaisPremiado();
+//        ap.atrizEntrevinteetrintaAnosMaispremiada();
+
         oscarmale = new ManipulacaoArquivo("oscarmale.csv");
         oscarfemale = new ManipulacaoArquivo("oscarfemale.csv");
 
@@ -40,7 +47,7 @@ public class Aplicacao {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         map.entrySet().stream().max(Comparator.comparingLong(Map.Entry::getValue)).ifPresent(c -> System.out.println(c.getKey() + c.getValue() ));
     }
-    private void atorMaisPremiada(){
+    private void atorMaisPremiado(){
         List<Oscar> roster = oscarmale.getRoster();
         Map<String, Long> map = roster.stream()
                 .map(Oscar::getName)
